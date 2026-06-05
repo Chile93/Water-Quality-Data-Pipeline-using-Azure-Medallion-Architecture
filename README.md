@@ -25,6 +25,53 @@ The pipeline processes over **1 million rows** of water sensor readings, coverin
 
 ---
 
+## Project Screenshots
+
+### Azure Resource Group & Resources
+![Azure Resource Group](Screenshots/Azure%20resource%20group.png)
+![Azure Resources](Screenshots/Azure%20resources.png)
+
+### SQL Database — Data Exploration & User Setup
+![Exploring the Data in the SQL Database](Screenshots/exploring%20the%20data%20in%20the%20sql%20database.png)
+![Creating User and Assigning Role in the Database](Screenshots/creating%20user%20ans%20assigning%20role%20in%20the%20database.png)
+
+### Azure Data Lake Storage Gen2
+![Creating ADLS Gen2 Storage](Screenshots/creating%20adls%20gen%202%20storage.png)
+
+### Logic App — Data Ingestion Design
+![Designing Logic App](Screenshots/desidning%20logic%20app.png)
+
+### Azure Data Factory — Orchestration
+![Orchestrating Data Movement in ADF](Screenshots/orchestrating%20data%20movement%20in%20ADF.png)
+
+### Azure Databricks — Medallion Architecture
+
+#### Bronze Layer
+![Bronze Layer](Screenshots/bronze%20layer.png)
+![Bronze Layer in Azure Databricks](Screenshots/Bronze%20layer%20in%20Azure%20Databricks.png)
+
+#### Silver Layer
+![Silver Layer](Screenshots/silver%20layer.png)
+![Silver Layer in Azure Databricks](Screenshots/Silver%20layer%20in%20Azure%20Databricks.png)
+
+#### Gold Layer
+![Gold Layer](Screenshots/Gold%20layer.png)
+
+### Lakeflow Declarative Pipelines (Formerly Delta Live Tables)
+![Lakeflow Declarative Pipeline](Screenshots/Lakeflow%20Declarative%20Pipeline.png)
+![Lakeflow Declarative Pipeline 2](Screenshots/Lakeflow%20Declarative%20Pipeline2.png)
+![Lakeflow Declarative Pipeline Designer](Screenshots/Lakeflow%20Declarative%20Pipeline%20%20designer.png)
+![Lakeflow Declarative Pipeline - Formerly Delta Live Table](Screenshots/Lakeflow%20Declarative%20Pipeline%20%28Fomerly%20Delta%20Live%20table%29.png)
+
+### Power BI — Loading & Dashboard
+![Load Data to Power BI](Screenshots/load%20data%20to%20power%20bi.png)
+![Loading Data from Azure Databricks to Power BI](Screenshots/Loading%20data%20from%20Azure%20Databricks%20to%20Power%20BI.png)
+![Loading Gold Data into Power BI](Screenshots/loading%20gold%20data%20into%20power%20bi.png)
+![Power BI Dashboard Tables](Screenshots/power%20bi%20dashboard%20tables.png)
+![Power BI Dashboard](Screenshots/power%20bi%20dashboard.png)
+
+---
+
 ## What You Will Learn
 
 - In-depth understanding of Azure services
