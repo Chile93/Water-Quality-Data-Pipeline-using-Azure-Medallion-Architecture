@@ -30,7 +30,7 @@ The pipeline processes over **1 million rows** of water sensor readings, coverin
 - In-depth understanding of Azure services
 - Configuration and implementation of on-premise SQL Server
 - Creation of Azure SQL database and server
-- Development of data ingestion workflows using Logic Apps
+- Loading data into Azure SQL Database using SQL Server Management Studio (SSMS)
 - Extraction of data from Azure-managed SQL Server database
 - Establishment of Azure Blob Storage account
 - Setup of Azure Data Lake Storage Gen2 account
@@ -50,7 +50,7 @@ The pipeline processes over **1 million rows** of water sensor readings, coverin
 | Category | Tools / Services |
 |---|---|
 | **Programming** | SQL, Scala |
-| **Data Ingestion** | Azure Logic Apps |
+| **Data Ingestion** | SQL Server Management Studio (SSMS), Azure Logic Apps |
 | **Storage** | Azure Blob Storage, Azure Data Lake Storage Gen2 |
 | **Orchestration** | Azure Data Factory |
 | **Processing** | Azure Databricks |
@@ -78,20 +78,24 @@ The dataset is a complex view of aggregated water sensor data with:
 
 The project follows a structured pipeline approach across five stages:
 
-### 1. Data Extraction
-- Connect to **Azure Managed SQL Database** containing the raw dataset
+### 1. Data Loading into Azure SQL Database
+- Open **SQL Server Management Studio (SSMS)** and connect to the Azure SQL Server
+- Import the source dataset using the SSMS Import Wizard
+- Verify the data is correctly loaded before proceeding
+
+### 2. Data Extraction via Logic App
 - Use **Azure Logic App** to trigger and pull data from the SQL Database on a schedule
 - Store extracted raw data in **Azure Blob Storage**
 
-### 2. Data Storage Setup
+### 3. Data Storage Setup
 - Create **Azure Data Lake Storage Gen2 (ADLS Gen2)** with hierarchical namespace enabled
 - Move raw data from Blob Storage into ADLS Gen2 for scalable analytics storage
 
-### 3. Data Orchestration
+### 4. Data Orchestration
 - Set up **Azure Data Factory (ADF)** to automate and manage data movement between services
 - Schedule and monitor pipeline execution to ensure reliability and traceability
 
-### 4. Medallion Architecture Implementation (Azure Databricks)
+### 5. Medallion Architecture Implementation (Azure Databricks)
 
 ```
 Raw Data (SQL DB)
@@ -121,7 +125,7 @@ Raw Data (SQL DB)
 | **Silver** | Cleaned and validated data — null handling, type casting, deduplication |
 | **Gold** | Aggregated, business-ready data optimized for reporting and dashboards |
 
-### 5. Visualization & Insights
+### 6. Visualization & Insights
 - Load Gold layer datasets into **Power BI** via Hive Metastore
 - Build interactive dashboards to surface water quality trends across countries, time periods, and determinand types
 
@@ -148,7 +152,7 @@ Raw Data (SQL DB)
 | `Bronze_Layer.ipynb` | Ingests raw data from ADLS Gen2 into the Bronze Delta table |
 | `Silver_Layer.ipynb` | Cleans and validates Bronze data into the Silver layer |
 | `Gold_Layer.ipynb` | Aggregates Silver data into curated Gold tables |
-| `Delta_Live_Table.ipynb` | Implements Delta Live Tables pipeline for automated processing |
+| `Delta_Live_Table.ipynb` | Implements Lakeflow Declarative Pipelines for automated processing |
 
 ### Terraform (inside `Project_Code.zip → Terraform/`)
 
@@ -193,8 +197,8 @@ terraform apply -var-file="secrets.tfvars"
 ### Step 2 — Load Data into Azure SQL Database
 
 1. Install Access Database Engine (included in `Installation & Execution`)
-2. Open SQL Server Management Studio and connect to the Azure SQL Server
-3. Import the dataset from `Data/` using the SQL Import Wizard
+2. Open **SQL Server Management Studio (SSMS)** and connect to the Azure SQL Server
+3. Import the dataset from `Data/` using the SSMS Import Wizard
 4. Verify row counts match expected 1M+ rows
 
 ### Step 3 — Configure and Trigger Logic App
@@ -218,7 +222,7 @@ Execute the notebooks in order within your Databricks workspace:
 1. `Bronze_Layer.ipynb` — load raw data into Delta Bronze table
 2. `Silver_Layer.ipynb` — clean and validate into Silver
 3. `Gold_Layer.ipynb` — aggregate into Gold tables
-4. (Optional) `Delta_Live_Table.ipynb` — for automated DLT pipeline
+4. (Optional) `Delta_Live_Table.ipynb` — for automated Lakeflow Declarative Pipelines
 
 ### Step 6 — Connect Power BI
 
