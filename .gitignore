@@ -1,0 +1,20 @@
+# Terraform secrets - never commit credentials
+secrets.tfvars
+*.tfvars
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# Power BI (large binary - optional to exclude)
+# *.pbix
+
+# Compiled / temp files
+*.tmp
+*.log
+~$*
+desktop.ini
+
+# OS files
+.DS_Store
+Thumbs.db
